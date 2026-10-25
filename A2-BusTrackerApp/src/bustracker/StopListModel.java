@@ -31,6 +31,14 @@ public class StopListModel extends AbstractListModel<BusStop>{
         fireIntervalRemoved(this, index, index);
     }
 
+    public void clear(){
+        int oldSize = stopList.size();
+        if(oldSize > 0){
+            stopList.clear();
+            fireIntervalRemoved(this, 0, oldSize - 1);
+        }
+    }
+
     public int findStopByName(String name){
         int targetStopIndex = -1;
         for(BusStop bustop : stopList){

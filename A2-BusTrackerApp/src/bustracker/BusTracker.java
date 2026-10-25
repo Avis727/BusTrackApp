@@ -10,8 +10,8 @@ public class BusTracker extends Observable{
 
     public Bus getBus(){return bus;}
 
-    public void notifyArrival(RouteComponent stop, int etaMinutes){
-        String message = "%s arriving at %s in %d mins".formatted(getBus().getBusNumber(), stop.toString(), etaMinutes);
+    public void notifyArrival(BusStop stop, int etaMinutes){
+        String message = "%s arriving at %s in %d mins".formatted(getBus().getBusNumber(), stop, etaMinutes);
         setChanged();
         notifyObservers(message);
     }
