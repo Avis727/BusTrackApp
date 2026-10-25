@@ -6,7 +6,7 @@ import javax.swing.table.AbstractTableModel;
 
 //Table model for JTable needed to store ETA
 public class EtaTableModel extends AbstractTableModel {
-	private List<Bus> data = new ArrayList<>();
+	private List<Bus> buses = new ArrayList<>();
     private List<String> etaMessages = new ArrayList<>();
     private final String[] columnNames = {"Bus Number", "ETA Message"};    
 
@@ -17,13 +17,13 @@ public class EtaTableModel extends AbstractTableModel {
 
     
     public void addBus(Bus bus) {
-        data.add(bus);
-    	fireTableRowsInserted(data.size()-1, data.size()-1);
+        buses.add(bus);
+    	fireTableRowsInserted(buses.size()-1, buses.size()-1);
     }
 
     @Override
     public int getRowCount() {
-        return data.size();
+        return buses.size();
     }
 
     @Override
@@ -48,6 +48,6 @@ public class EtaTableModel extends AbstractTableModel {
     }
     
     public Bus getBusAt(int row) {
-        return data.get(row);
+        return buses.get(row);
     }
 }

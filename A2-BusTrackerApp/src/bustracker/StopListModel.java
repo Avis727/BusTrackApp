@@ -1,9 +1,6 @@
 package bustracker;
 import javax.swing.*;
-import java.util.*;
-
 import java.util.ArrayList;
-import javax.swing.AbstractListModel;
 
 public class StopListModel extends AbstractListModel<BusStop>{
     private ArrayList<BusStop> stopList;
