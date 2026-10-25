@@ -9,6 +9,8 @@ abstract class RouteComponent{
         this.dwellMinutes = dwellMinutes;
     }
 
+    public String getName(){return name;}
+
     @Override
     public String toString(){
         return "%s(%dmin)".formatted(name, dwellMinutes);

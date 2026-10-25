@@ -1,8 +1,9 @@
 package bustracker;
 
-import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.table.AbstractTableModel;
+
 //Table model for JTable needed to store ETA
 public class EtaTableModel extends AbstractTableModel {
 	private List<Bus> data = new ArrayList<>();
@@ -10,28 +11,35 @@ public class EtaTableModel extends AbstractTableModel {
     private final String[] columnNames = {"Bus Number", "ETA Message"};    
 
     public void addEtaMessage(String msg) {
-        //Add to list
-    	//fire event
+        etaMessages.add(msg);
+    	fireTableRowsInserted(etaMessages.size()-1, etaMessages.size()-1);
     }
+
     
     public void addBus(Bus bus) {
-    	//Add to list
-    	//fire event
+        data.add(bus);
+    	fireTableRowsInserted(data.size()-1, data.size()-1);
     }
 
     @Override
     public int getRowCount() {
-        //return count
+        return data.size();
     }
 
     @Override
     public int getColumnCount() {
-        //return count
+        return columnNames.length;
     }
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        //arrange values for bus number and eta message
+        if(columnIndex == 0){
+            return getBusAt(rowIndex).getBusNumber();
+        }else if(columnIndex == 1){
+            return etaMessages.get(rowIndex);
+        }else{
+            return new Exception("invalid row index");
+        }
     }
 
     @Override
@@ -40,6 +48,6 @@ public class EtaTableModel extends AbstractTableModel {
     }
     
     public Bus getBusAt(int row) {
-        //return bust at a specific row index
+        return data.get(row);
     }
 }
