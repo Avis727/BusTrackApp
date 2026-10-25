@@ -1,6 +1,12 @@
 package bustracker;
 
-//Composite hierarchy leaf
-public class BusStopLeaf extends RouteComponent { 
-    //TODO
+public class BusStopLeaf extends RouteComponent{
+    public BusStopLeaf(String name, int dwellMinutes){
+        super(name, dwellMinutes);
+    }
+
+    @Override
+    public int getTotalDwellMinutes(){
+        return dwellMinutes;
+    }
 }
